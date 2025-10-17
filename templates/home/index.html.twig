@@ -15,7 +15,7 @@
 					{% set adoptedBy = "" %}
 				{% else %}
 					{% set border = "border-warning border-4" %}
-					{% set adoptedBy = "(Adopté par " ~ animal.adoptant.nom ~ ")" %}
+					{% set adoptedBy = "(Adopté par " ~ animal.adoptant.prenom ~ " " ~ animal.adoptant.nom ~ ")" %}
 				{% endif %}
 
 				<div class="col-md-6">
@@ -28,7 +28,7 @@
 									{{ adoptedBy }}
 								</h5>
 								{% if animal.adoptable == 1 and animal.adoptant is null %}
-									<a href="" class="btn btn-success btn-sm">
+									<a href="{{ path('animal_adopter', {'id': animal.id}) }}" class="btn btn-success btn-sm">
 										Adopter maintenant!
 									</a>
 								{% endif %}

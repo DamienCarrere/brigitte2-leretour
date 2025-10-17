@@ -8,6 +8,7 @@ use App\Repository\AnimalRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -71,11 +72,22 @@ final class AnimalController extends AbstractController
     #[Route('/{id}', name: 'app_animal_delete', methods: ['POST'])]
     public function delete(Request $request, Animal $animal, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$animal->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $animal->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($animal);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/animal/adopter/{id}', name: 'animal_adopter', methods: ['GET'])]
+    public function adopter(Animal $animal, EntityManagerInterface $em): RedirectResponse
+    {
+        if ($animal->isAdoptable()) {
+            $animal->setAdoptable(false);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('app_home_index');
     }
 }
