@@ -1,135 +1,21 @@
-:root {
-    --bg: #f7f8fb;
-    --surface: #ffffff;
-    --muted: #6b7280; 
-    --text: #111827; 
-    --primary: #0f62fe;
-    --primary-600: #0353c0;
-    --accent: #06b6d4; 
-    --success: #059669;
-    --danger: #dc2626;
-    --radius: 8px;
-    --shadow-sm: 0 1px 2px rgba(16,24,40,0.04);
-    --shadow-md: 0 6px 18px rgba(17,24,39,0.08);
-}
-
-* { box-sizing: border-box; }
-html,body { block-size: 100%; }
 body {
-    margin: 0;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.45;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
+    height: 100vh;
+
 }
 
-.container {
-    max-inline-size: 1100px;
-    margin: 0 auto;
-    padding: 28px 20px;
+header {
+    height: 15vh;
+    width: 100%;
 }
 
-.site-header {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    background: transparent;
-    padding: 18px 0;
-}
-.site-title {
-    font-weight: 600;
-    font-size: 20px;
-    color: var(--text);
-}
-.site-subtitle {
-    color: var(--muted);
-    font-size: 13px;
+main {
+
+    height: 70vh;
+    width: 100%;
+    overflow-y: auto;
 }
 
-/* Card */
-.card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
-    padding: 18px;
-    border: 1px solid rgba(17,24,39,0.06);
+footer {
+    height: 15vh;
+    width: 100%;
 }
-.card--spacious { padding:28px; }
-
-h1, h2, h3, h4 { color: var(--text); margin: 0 0 12px 0; }
-h1 { font-size: 28px; }
-h2 { font-size: 22px; }
-p { margin: 0 0 12px 0; color: #374151; }
-
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-weight: 600;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: background-color .12s ease, box-shadow .12s ease, transform .04s ease;
-    background: var(--primary);
-    color: white;
-}
-.btn:hover { background: var(--primary-600); transform: translateY(-1px); }
-.btn--ghost { background: transparent; color: var(--primary); border-color: rgba(15,98,254,0.12); }
-.btn--danger { background: var(--danger); }
-
-/* Form elements */
-.form-row { display:flex; gap:12px; align-items:center; margin-block-end:12px; }
-label { display:block; font-size:14px; color:var(--muted); margin-block-end:6px; }
-input[type="text"], input[type="email"], input[type="number"], select, textarea {
-    inline-size:100%;
-    padding:10px 12px;
-    border-radius:6px;
-    border:1px solid #dfe6ef; 
-    background: #fff;
-    font-size:15px;
-    color: var(--text);
-}
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    box-shadow: 0 8px 24px rgba(15,62,255,0.08);
-    border-color: var(--primary-600);
-    background: #fff;
-}
-
-.table { inline-size:100%; border-collapse: collapse; background: transparent; }
-.table th, .table td { text-align: start; padding: 12px 14px; border-block-end: 1px solid #e6eef6; }
-.table thead th { color: var(--muted); font-size:13px; font-weight:600; }
-.table tbody tr { background: transparent; transition: background-color .12s ease, box-shadow .12s ease; }
-.table tbody tr:hover { background: rgba(15,98,254,0.03); }
-.table .row-actions { text-align: end; }
-
-.divider { block-size:1px; background: #e6eef6; margin-block: 12px; }
-
-.site-header { border-block-end: 1px solid #e7ecf6; }
-
-.muted { color: var(--muted); }
-.text-right { text-align: end; }
-.spaced { margin-block-start: 16px; }
-
-.grid { display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
-.col-6 { grid-column: span 6; }
-.col-4 { grid-column: span 4; }
-.col-3 { grid-column: span 3; }
-
-@media (max-width: 800px) {
-    .container { padding: 18px 12px; }
-    .grid { grid-template-columns: repeat(6, 1fr); }
-    .col-6 { grid-column: span 6; }
-    .col-4 { grid-column: span 6; }
-}
-
-.site-footer { color: var(--muted); font-size:13px; padding: 24px 0; }
-
-.sr-only { position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
