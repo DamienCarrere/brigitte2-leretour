@@ -9,17 +9,30 @@
 			{% for animal in animals %}
 				{% if animal.adoptable == 1 and animal.adoptant is null %}
 					{% set border = "border-success border-4" %}
+					{% set adoptedBy = "(Disponible pour adoption!)" %}
 				{% elseif animal.adoptable == 0 %}
 					{% set border = "border-danger border-4" %}
+					{% set adoptedBy = "" %}
 				{% else %}
 					{% set border = "border-warning border-4" %}
+					{% set adoptedBy = "(Adopté par " ~ animal.adoptant.nom ~ ")" %}
 				{% endif %}
 
 				<div class="col-md-6">
-					<div class="card {{ border }} h-100">
+					<div class="card {{ border }} h-100 card-hover">
 						<img src="{{ animal.img }}" , class="card-img-top">
 						<div class="card-body">
-							<h5 class="card-title mb-1">{{ animal.nom }}</h5>
+							<div class="d-flex justify-content-between align-items-center mb-1">
+								<h5 class="card-title mb-0">
+									<strong>{{ animal.nom }}</strong>
+									{{ adoptedBy }}
+								</h5>
+								{% if animal.adoptable == 1 and animal.adoptant is null %}
+									<a href="" class="btn btn-success btn-sm">
+										Adopter maintenant!
+									</a>
+								{% endif %}
+							</div>
 							<h6 class="card-subtitle text-muted mb-2">{{ animal.age }}
 								ans</h6>
 							<p class="card-text">{{ animal.sexe }}</p>
