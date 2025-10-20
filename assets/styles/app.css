@@ -1,3 +1,30 @@
 body {
-    background-color: skyblue;
+    height: 100vh;
+
+}
+
+header {
+    height: 15vh;
+    width: 100%;
+}
+
+main {
+
+    height: 70vh;
+    width: 100%;
+    overflow-y: auto;
+}
+
+footer {
+    height: 15vh;
+    width: 100%;
+}
+
+
+.card-hover {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
 }

@@ -31,6 +31,9 @@ class Animal
     #[ORM\Column]
     private ?bool $adoptable = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $img = null;
+
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Espece $espece = null;
@@ -238,6 +241,17 @@ class Animal
     {
         $this->menu->removeElement($menu);
 
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
         return $this;
     }
 }
